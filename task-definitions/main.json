@@ -1,0 +1,85 @@
+[
+  {
+    "volumesFrom": [],
+    "memory": 6144,
+    "extraHosts": [
+        {
+            "hostname": "elk.example.net",
+            "ipAddress": "127.0.0.1"
+        },
+        {
+            "hostname": "elk-node1.example.net",
+            "ipAddress": "10.0.0.1"
+        },
+        {
+            "hostname": "elk-node2.example.net",
+            "ipAddress": "10.0.0.2"
+        }
+    ],
+    "portMappings": [
+      {
+        "hostPort": 5601,
+        "containerPort": 5601,
+        "protocol": "tcp"
+      },
+      {
+        "hostPort": 9200,
+        "containerPort": 9200,
+        "protocol": "tcp"
+      },
+      {
+        "hostPort": 9300,
+        "containerPort": 9300,
+        "protocol": "tcp"
+      },
+      {
+        "hostPort": 5044,
+        "containerPort": 5044,
+        "protocol": "tcp"
+      }
+    ],
+    "hostname": null,
+    "essential": true,
+    "entryPoint": null,
+    "mountPoints": [],
+    "name": "elk-stage",
+    "ulimits": [
+      {
+        "softLimit": 65536,
+        "hardLimit": 65536,
+        "name": "nofile"
+      }
+    ],
+    "dockerSecurityOptions": null,
+    "environment": [
+        {
+            "name": "CLUSTER_NAME",
+            "value": "production"
+        },
+        {
+            "name": "ES_HEAP_SIZE",
+            "value": "2g"
+        },
+        {
+            "name": "MAX_OPEN_FILES",
+            "value": "65535"
+        }
+    ],
+    "links": null,
+    "workingDirectory": null,
+    "readonlyRootFilesystem": null,
+    "image": "eternaltyro/elk-aws-discovery",
+    "command": null,
+    "user": null,
+    "dockerLabels": {
+        "Elasticsearch": "True",
+        "Logstash": "True",
+        "Kibana": "True",
+        "Version": "5.4.0"
+    },
+    "logConfiguration": null,
+    "cpu": 0,
+    "privileged": null,
+    "memoryReservation": null
+  }
+]
