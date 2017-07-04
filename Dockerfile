@@ -57,9 +57,16 @@ RUN mkdir ${ES_HOME} \
  && useradd -r -s /usr/sbin/nologin -M -c "Elasticsearch service user" -u ${ES_UID} -g elasticsearch elasticsearch \
  && mkdir -p /var/log/elasticsearch /etc/elasticsearch /etc/elasticsearch/scripts /var/lib/elasticsearch \
  && chown -R elasticsearch:elasticsearch ${ES_HOME} /var/log/elasticsearch /var/lib/elasticsearch \
- && ${ES_HOME}/bin/elasticsearch-plugin install discovery-ec2 --batch
+ && ${ES_HOME}/bin/elasticsearch-plugin install discovery-ec2 --batch \
+ && curl -s https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add - \
+ && echo 'deb [arch=amd64] http://packages.elastic.co/curator/5/debian stable main' | sudo tee -a /etc/apt/sources.list.d/curator.list \
+ && apt-get update -qq \
+ && apt-get -y install elasticsearch-curator
 
 ADD ./elasticsearch-init /etc/init.d/elasticsearch
+ADD ./curator-config /etc/curator.conf.yml
+ADD ./curator-action /etc/curator.action.yml
+ADD ./curator-cron /etc/cron.d/curator
 RUN sed -i -e 's#^ES_HOME=$#ES_HOME='$ES_HOME'#' /etc/init.d/elasticsearch \
  && chmod +x /etc/init.d/elasticsearch
 
