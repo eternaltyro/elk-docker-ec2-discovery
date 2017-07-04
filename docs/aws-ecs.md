@@ -6,16 +6,11 @@ This web page documents how to use the [sebp/elk](https://hub.docker.com/r/sebp/
 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-	- [Pulling specific version combinations](#specific-version-combinations)
 - [Usage](#usage)
-	- [Running the container using Docker Compose](#running-with-docker-compose)
-	- [Running the container using Kitematic](#running-with-kitematic)
-	- [Creating a dummy log entry](#creating-dummy-log-entry)
 	- [Starting services selectively](#selective-services)
 	- [Overriding start-up variables](#overriding-variables)
 - [Forwarding logs](#forwarding-logs)
 	- [Forwarding logs with Filebeat](#forwarding-logs-filebeat)
-	- [Linking a Docker container to the ELK container](#linking-containers)
 - [Building the image](#building-image)
 - [Tweaking the image](#tweaking-image)
 	- [Updating Logstash's configuration](#updating-logstash-configuration)
@@ -40,7 +35,6 @@ This web page documents how to use the [sebp/elk](https://hub.docker.com/r/sebp/
 	- [If your log-emitting client doesn't seem to be able to reach Logstash...](#logstash-unreachable)
 	- [Additional tips](#general-troubleshooting)
 - [Reporting issues](#reporting-issues)
-- [Breaking changes](#breaking-changes)
 - [References](#references)
 - [About](#about)
 
@@ -568,7 +562,7 @@ If the suggestions given above don't solve your issue, then you should have a lo
 
 - Your log-emitting client's logs.
 
-- ELK's logs, by `docker exec`'ing into the running container (see [Creating a dummy log entry](#creating-dummy-log-entry)), turning on stdout log (see [plugins-outputs-stdout](https://www.elastic.co/guide/en/logstash/current/plugins-outputs-stdout.html)), and checking Logstash's logs (located in `/var/log/logstash`), Elasticsearch's logs (in `/var/log/elasticsearch`), and Kibana's logs (in `/var/log/kibana`).
+- ELK's logs, by `docker exec`'ing into the running container, turning on stdout log (see [plugins-outputs-stdout](https://www.elastic.co/guide/en/logstash/current/plugins-outputs-stdout.html)), and checking Logstash's logs (located in `/var/log/logstash`), Elasticsearch's logs (in `/var/log/elasticsearch`), and Kibana's logs (in `/var/log/kibana`).
 
 	Note that ELK's logs are rotated daily and are deleted after a week, using logrotate. You can change this behaviour by overwriting the `elasticsearch`, `logstash` and `kibana` files in `/etc/logrotate.d`.  
 
@@ -615,3 +609,5 @@ Here is the list of breaking changes that may have side effects when upgrading t
 ## About <a name="about"></a>
 
 Written by [Sébastien Pujadas](http://pujadas.net), released under the [Apache 2 license](http://www.apache.org/licenses/LICENSE-2.0).
+
+Modified by eternaltyro.
