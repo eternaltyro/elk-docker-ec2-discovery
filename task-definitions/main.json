@@ -62,7 +62,7 @@
         },
         {
             "name": "MAX_OPEN_FILES",
-            "value": "65535"
+            "value": "65536"
         }
     ],
     "links": null,
