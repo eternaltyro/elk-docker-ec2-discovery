@@ -1,1 +1,1 @@
-0 */6 * * * root [ -f /etc/curator.conf.yml ] && [ -f /etc/curator.action.yml ] && /usr/bin/curator --config /etc/curator.conf.yml curator.action.yml >> /tmp/curator.log 2>&1
+0 */6 * * * root [ -f /etc/curator.conf.yml ] && [ -f /etc/curator.action.yml ] && /usr/bin/curator --config /etc/curator.conf.yml /etc/curator.action.yml >> /tmp/curator.log 2>&1
