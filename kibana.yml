@@ -99,3 +99,9 @@ server.host: "0.0.0.0"
 # Set the interval in milliseconds to sample system and process performance
 # metrics. Minimum is 100ms. Defaults to 5000.
 #ops.interval: 5000
+
+# X-PACK
+xpack.security.encryptionKey: U2SnIMw5f2tqjeTesXNurbF6ybrR9gTFRfb4
+xpack.security.sessionTimeout: 1800000
+xpack.security.cookieName: "sid"
+xpack.security.secureCookies: true
