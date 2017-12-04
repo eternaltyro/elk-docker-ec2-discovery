@@ -58,6 +58,8 @@ RUN mkdir ${ES_HOME} \
  && mkdir -p /var/log/elasticsearch /etc/elasticsearch /etc/elasticsearch/scripts /var/lib/elasticsearch \
  && chown -R elasticsearch:elasticsearch ${ES_HOME} /var/log/elasticsearch /var/lib/elasticsearch \
  && ${ES_HOME}/bin/elasticsearch-plugin install discovery-ec2 --batch \
+ && ${ES_HOME}/bin/elasticsearch-plugin install ingest-user-agent --batch \
+ && ${ES_HOME}/bin/elasticsearch-plugin install ingest-geoip --batch \
  && curl -s https://packages.elastic.co/GPG-KEY-elasticsearch | apt-key add - \
  && echo 'deb [arch=amd64] http://packages.elastic.co/curator/5/debian stable main' | tee -a /etc/apt/sources.list.d/curator.list \
  && apt-get update -qq \
